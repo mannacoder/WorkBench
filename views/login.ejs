@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/login.css">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/84e9632ba7.js" crossorigin="anonymous"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&family=Ubuntu:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div>
+        <div class="main">
+            <div class="registers">
+                <h2 class="h2">Login <i class="fas fa-sign-in-alt"></i></h2>
+                <%- include('partials/messages'); -%>
+                <form action="/users/login" method="POST" id="registers">
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" id="email" name="email" class="my" placeholder="Enter Email" />
+                    <br><br>
+                    <label for="password">Password</label>
+                    <br>
+                    <input type="password" id="password" name="password" class="my"
+                        placeholder="Enter Password" />
+                    <br><br>
+                    <button id="submit" type="submit">Login <i class="fas fa-sign-in-alt"></i></button>
+                    <p style="padding-top: 4px;" class="lead mt-4">No Account? <a style="color: darkorange;"
+                            href="/users/register">Get Started</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

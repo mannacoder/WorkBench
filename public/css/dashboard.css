@@ -3,23 +3,28 @@ html {
   position: relative;
 }
 
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
+
+/* navigation bar */
+  
 .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
-    background-color: #1768AC;
+  background-color: #1768AC;
+  margin-bottom: 20px;
 }
-.navbar-nav  li a:hover {
-    color: #1abc9c !important;
+
+.nav-item {
+  padding: 0 18px;
 }
+.nav-link{
+  font-size: 0.6 rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+.navbar-brand{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+
 .footer-padding {
 	padding-bottom: 60px;
 }

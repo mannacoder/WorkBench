@@ -10,13 +10,17 @@ const pool = require("./db");
 
 module.exports = function (passport) {
     passport.use(
-        new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-            // Mtach User
+        new LocalStrategy((email, password, done) => {
+            // Match User
+            console.log(email, password);
             pool.query(
                 "SELECT * FROM users WHERE email = $1"
                 [email],
                 (err, data) => {
-                    if(err) throw err;
+                    if(err) {
+                        console.log(err);
+                        done(err);
+                    }
                     else {
                         if(data.rowCount == 0) {
                             return done(null, false, { message: "That email is not registered" });
@@ -32,12 +36,13 @@ module.exports = function (passport) {
                             })
                         }
                     }
-                })
+                }
+            );
         })
     );
 
     passport.serializeUser(function (user, done) {
-        done(null, user.id);
+        done(null, user.user_id);
     });
 
     passport.deserializeUser(function (id, done) {
@@ -46,7 +51,7 @@ module.exports = function (passport) {
         // });
         pool.query(
             "SELECT * FROM users WHERE user_id = $1",
-            [id],
+            [parseInt(id,10)],
             (err, data) => {
                 done(err, data.rows[0]);
             }

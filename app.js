@@ -5,9 +5,6 @@ const session = require("express-session");
 const passport = require("passport");
 const app = express();
 
-//Passport config
-require("./config/passport")(passport);
-
 //DB config
 // const db = process.env.MongoURI || require("./config/keys").MongoURI;
 
@@ -22,6 +19,10 @@ app.use(express.static("public"));
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+//Passport config
+require("./config/passport")(passport);
 
 // Express session 
 app.use(session({
@@ -33,7 +34,6 @@ app.use(session({
 //Passport
 app.use(passport.initialize());
   app.use(passport.session());
-
 
 //connect flash
 app.use(flash());

@@ -10,7 +10,7 @@ const pool = require("./db");
 
 module.exports = function (passport) {
     passport.use(
-        new LocalStrategy((email, password, done) => {
+        new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
             // Match User
             console.log(email, password);
             pool.query(

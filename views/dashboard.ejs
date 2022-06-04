@@ -1,10 +1,44 @@
-
 <%- include("partials/header"); -%>
-    <h1>Home</h1>
-    <p> <%= startingContent %> </p>
+<h1 style="text-decoration: underline">Your Dashboard</h1>
+<br />
 
+<% if (posts.length>0) { %>
 
-  <%  posts.forEach(function(post){ %>
+<table class="table">
+  <thead>
+    <tr class="">
+      <th class="col-md-6">Title</th>
+      <th class="col-md-3">Date</th>
+      <th class="col-md-3">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.forEach(posts => { %>
+    <tr class="">
+      <td class="col-md-6">
+        <button class="btn btn-lg btn-outline-secondary">
+          <a class="title-post" href="/posts/<%= posts._id %>"
+            ><%= posts.title %></a
+          >
+        </button>
+      </td>
+      <td class="col-md-3">
+        <%= posts.createdAt.getDate(); %>/<%= posts.createdAt.getMonth(); %>/<%=
+        posts.createdAt.getFullYear(); %>
+      </td>
+      <td class="col-md-3">
+        <%= posts.createdAt.getHours(); %>:<%= posts.createdAt.getMinutes(); %>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<% } else { %>
+<h3 class="not-posted">Nothing in your Diary!!</h3>
+<% } %> <%- include("partials/footer"); -%>
+
+<!-- <%  posts.forEach(function(post){ %>
 
     <h1><%=post.title%></h1>
     <p>
@@ -13,7 +47,4 @@
     </p>
 
 
-    <% }) %>
-
-
-<%- include("partials/footer"); -%>
+    <% }) %> -->
